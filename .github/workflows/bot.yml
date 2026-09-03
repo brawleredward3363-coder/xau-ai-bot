@@ -16,10 +16,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install yfinance pandas requests
+      - name: Install dependencies
+        run: |
+          pip install yfinance pandas requests
 
-      - run: python bot.py
+      - name: Run XAU AI Bot
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python bot.py
